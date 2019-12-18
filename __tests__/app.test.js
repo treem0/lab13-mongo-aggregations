@@ -93,4 +93,23 @@ describe('app routes', () => {
         });
       });
   });
+
+  it('updates a film', () => {
+    return request(app)
+      .patch(`/api/v1/films/${film.id}`)
+      .send({ Title: 'Treemo Broke' })
+      .then(res => {
+        expect(res.body).toEqual({
+          _id: expect.any(String),
+          Year: 1990,
+          Title: 'Treemo Broke',
+          Subject: 'Action',
+          Actor: 'Travis Molter',
+          Actress: 'Emma Watson',
+          Director: 'Travis Molter',
+          Popularity: 1,
+          __v: 0
+        });
+      });
+  });
 });
