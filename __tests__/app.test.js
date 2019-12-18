@@ -75,4 +75,22 @@ describe('app routes', () => {
         });
       });
   });
+
+  it('gets all films', () => {
+    return request(app)
+      .get('/api/v1/films')
+      .then(res => {
+        expect(res.body).toContainEqual({
+          _id: expect.any(String),
+          Year: 1990,
+          Title: 'Treemo Money',
+          Subject: 'Action',
+          Actor: 'Travis Molter',
+          Actress: 'Emma Watson',
+          Director: 'Travis Molter',
+          Popularity: 1,
+          __v: 0
+        });
+      });
+  });
 });
